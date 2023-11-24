@@ -1,9 +1,8 @@
-import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:habitat/features/apiexample/cubit/api_example_cubit.dart';
-import 'package:habitat/features/apiexample/cubit/cat_api.dart';
 import 'package:habitat/infra/l10n/l10n.dart';
+import 'package:habitat/infra/servicelocator/service_locator.dart';
 
 class APIExamplePage extends StatelessWidget {
   const APIExamplePage({super.key});
@@ -11,9 +10,7 @@ class APIExamplePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return BlocProvider(
-      create: (_) => ApiExampleCubit(
-        CatRestClient(Dio()),
-      ),
+      create: (_) => ApiExampleCubit(client: ServiceLocator.get()),
       child: const ApiExampleView(),
     );
   }

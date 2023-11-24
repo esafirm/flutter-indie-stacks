@@ -6,7 +6,7 @@ import 'package:meta/meta.dart';
 part 'api_example_state.dart';
 
 class ApiExampleCubit extends Cubit<ApiExampleState> {
-  ApiExampleCubit(this.client) : super(ApiExampleInitial());
+  ApiExampleCubit({required this.client}) : super(ApiExampleInitial());
 
   final CatRestClient client;
 
