@@ -19,7 +19,8 @@ class CatFact {
     this.used,
   });
 
-  factory CatFact.fromJson(Map<String, dynamic> json) => _$CatFactFromJson(json);
+  factory CatFact.fromJson(Map<String, dynamic> json) =>
+      _$CatFactFromJson(json);
 
   Status? status;
   @JsonKey(name: '_id')
