@@ -3,6 +3,7 @@ import 'dart:developer';
 
 import 'package:bloc/bloc.dart';
 import 'package:flutter/widgets.dart';
+import 'package:habitat/infra/initializer/initializer.dart';
 import 'package:habitat/infra/network/network_client.dart';
 
 class AppBlocObserver extends BlocObserver {
@@ -21,6 +22,12 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
+void runInitializers(List<AppInitializer> initializers) {
+  for (final element in initializers) {
+    element.init();
+  }
+}
+
 Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   FlutterError.onError = (details) {
     log(details.exceptionAsString(), stackTrace: details.stack);
@@ -29,7 +36,13 @@ Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
   Bloc.observer = const AppBlocObserver();
 
   // Add cross-flavor configuration here
-  NetworkClientModule.init();
+  WidgetsFlutterBinding.ensureInitialized();
+
+  runInitializers(
+    [
+      NetworkClientModule(),
+    ],
+  );
 
   runApp(await builder());
 }

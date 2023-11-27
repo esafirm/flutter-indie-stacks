@@ -28,6 +28,12 @@ class ServiceLocator {
     return _internalLocator.get<T>(instanceName: instanceName);
   }
 
+  static Future<T> getAsync<T extends Object>({
+    String? instanceName,
+  }) {
+    return _internalLocator.getAsync(instanceName: instanceName);
+  }
+
   static bool isRegistered<T extends Object>() {
     return _internalLocator.isRegistered<T>();
   }
