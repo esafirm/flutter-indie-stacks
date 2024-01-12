@@ -22,7 +22,7 @@ dependencies:
 
 dev_dependencies:
   bloc_test: ^9.1.4
-  build_runner: ^2.3.3
+  build_runner: ^2.4.8
   flutter_test:
     sdk: flutter
   json_serializable: ^6.6.0
