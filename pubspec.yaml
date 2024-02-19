@@ -8,7 +8,7 @@ environment:
 
 dependencies:
   bloc: ^8.1.2
-  dio: ^5.3.4
+  dio: ^5.4.1
   flutter:
     sdk: flutter
   flutter_bloc: ^8.1.3
